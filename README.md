@@ -1,23 +1,23 @@
-# 🚀 Flask Application with CI/CD using Jenkins and Docker
+# Flask Application with CI/CD using Jenkins and Docker
 
 This project demonstrates a **complete CI/CD pipeline** for deploying a Flask application using **Jenkins**, **Docker**, and **GitHub**.
 It automates the process of building and deploying the app whenever new code is pushed to the `main` branch.
 
 ---
 
-## 🧩 Project Overview
+## Project Overview
 
 - **Application** → Python Flask web app.
 - **Containerization** → Dockerized Flask app.
 - **Automation Tool** → Jenkins (Declarative Pipeline).
 - **Source Control** → Git & GitHub.
-- **Trigger Mechanism** → Manual build or GitHub Webhook.
+- **Trigger Mechanism** → Manual build.
 
 The goal is to achieve a continuous integration and continuous deployment (CI/CD) workflow where every code change is automatically built and deployed inside a Docker container using Jenkins.
 
 ---
 
-## ⚙️ Tools & Technologies Used
+## Tools & Technologies Used
 
 | Category | Tool |
 |-----------|------|
@@ -26,15 +26,14 @@ The goal is to achieve a continuous integration and continuous deployment (CI/CD
 | **Containerization** | Docker Desktop |
 | **CI/CD Automation** | Jenkins |
 | **Version Control** | Git & GitHub |
-| **Build Trigger (Optional)** | GitHub Webhook |
-| **Operating System** | Windows 10/11 |
+| **Operating System** | Windows 11 |
 
 ---
 
-## 🧠 CI/CD Pipeline Summary
+## CI/CD Pipeline Summary
 
 1. Developer pushes new code to **GitHub `main` branch**.
-2. **Jenkins** fetches the latest code (via Git SCM or webhook trigger).
+2. **Jenkins** fetches the latest code (via Git SCM).
 3. The Jenkins pipeline automatically:
    - Clones the repository.
    - Builds a **Docker image**.
@@ -43,7 +42,7 @@ The goal is to achieve a continuous integration and continuous deployment (CI/CD
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 flask-jenkins-pipeline/
@@ -55,7 +54,7 @@ flask-jenkins-pipeline/
 
 ---
 
-## 🔁 Push Code to GitHub (Required before CI runs)
+## Push Code to GitHub (Required before CI runs)
 
 If you haven't already pushed your project to GitHub, follow these steps from your project root directory:
 
@@ -71,29 +70,29 @@ git remote add origin https://github.com/anuj1611/jenkins-pipeline-app.git
 
 # add files and commit
 git add .
-git commit -m "Initial commit: add Flask app, Dockerfile, Jenkinsfile"
+git commit -m "Initial commit: add Flask app, Dockerfile, jenkinsfile"
 
 # push to GitHub
 git push -u origin main
 ```
 
-> ✅ After pushing, Jenkins (configured with your repo) can pull the `main` branch and execute the `Jenkinsfile` pipeline.
+> After pushing, Jenkins (configured with your repo) can pull the `main` branch and execute the `jenkinsfile` pipeline.
 
 ---
 
-## 🐳 Build, Run & Test Locally (Manual Verification)
+## Build, Run & Test Locally (Manual Verification)
 
 These steps let you verify the Docker image and container locally before relying on Jenkins.
 
 ### 1. Build the Docker image
 ```bash
-docker build -t Jenkins-pipeline-app .
+docker build -t jenkins-pipeline-app .
 ```
-**Expected result:** Docker builds the image and tags it as `Jenkins-pipeline-app`.
+**Expected result:** Docker builds the image and tags it as `jenkins-pipeline-app`.
 
 ### 2. Run the Docker container
 ```bash
-docker run -d -p 5000:5000 --name flask-container Jenkins-pipeline-app
+docker run -d -p 5000:5000 --name flask-container jenkins-pipeline-app
 ```
 **What this does:** Runs the container in detached mode, maps container port `5000` to host port `5000`, and names the container `flask-container`.
 
@@ -118,7 +117,7 @@ curl http://localhost:5000
 
 Expected response:  
 ```
-Hello from Jenkins CI/CD Pipeline 🚀
+Hello from Jenkins CI/CD Pipeline 
 ```
 
 ### 5. Stop & Remove the container (cleanup)
@@ -128,20 +127,15 @@ docker rm -f flask-container
 
 ---
 
-## ⚡ Jenkins Setup
+## Jenkins Setup
 
-### Step 1️⃣ — Install Prerequisites
-- **Java 21**
-- **Jenkins (LTS)**
-- **Docker Desktop**
-
-### Step 2️⃣ — Install Jenkins Plugins
+### Step 2️— Install Jenkins Plugins
 - Git Plugin
 - Pipeline Plugin
 - Docker Pipeline Plugin
 - Blue Ocean (optional)
 
-### Step 3️⃣ — Create a Pipeline Job
+### Step 3️— Create a Pipeline Job
 1. Jenkins Dashboard → **New Item → Pipeline**  
 2. Name it `flask-pipeline`  
 3. Under **Pipeline Definition**, choose **Pipeline script from SCM**  
@@ -150,20 +144,6 @@ docker rm -f flask-container
 5. Branch: `*/main`  
 6. Script Path: `Jenkinsfile`  
 7. Save and click **Build Now**
-
----
-
-## 🌐 Optional: Setup GitHub Webhook (Auto-Trigger)
-
-To automatically trigger Jenkins builds when code is pushed:
-
-1. In your GitHub repo → **Settings → Webhooks → Add Webhook**  
-2. **Payload URL:** `http://<your-machine-ip>:8080/github-webhook/`  
-3. **Content type:** `application/json`  
-4. Select **Just the push event**  
-5. Click **Add Webhook**
-
-Now every code push automatically triggers Jenkins to build and deploy.
 
 ---
 
@@ -177,25 +157,14 @@ Now every code push automatically triggers Jenkins to build and deploy.
 
 ---
 
-## 🎯 Learning Outcomes
+## Learning Outcomes
 
 - Built a working **CI/CD pipeline** using Jenkins.  
 - Automated Flask app deployment using Docker.  
-- Configured Jenkins with **Git SCM** and **Webhooks**.  
+- Configured Jenkins with **Git SCM**.  
 - Verified the pipeline locally by building and running Docker containers manually.  
 - Understood end-to-end **DevOps workflow** from Code → Build → Deploy.
 
 ---
 
-## 🧑‍💻 Author
-
-**Anuj Dhiraj Bhagat**  
-🎓 B.Tech - Electronics and Computer Science  
-📧 your.email@example.com  
-🔗 [LinkedIn Profile or Portfolio Link]
-
----
-
-## 📜 License
-
-This project is open-source and available under the [MIT License](LICENSE).
+Happy Learning! 😊
