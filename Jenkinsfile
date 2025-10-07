@@ -17,25 +17,25 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                sh 'docker build -t ${IMAGE_NAME} .'
+                bat 'docker build -t %IMAGE_NAME% .'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing container...'
-                sh 'docker run --rm ${IMAGE_NAME} python -m unittest || echo "No tests yet!"'
+                echo 'Running test container...'
+                bat 'docker run --rm %IMAGE_NAME% python -m unittest || echo "No tests found"'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying app...'
+                echo 'Deploying container...'
                 script {
-                    // Stop any running container
-                    sh 'docker rm -f ${CONTAINER_NAME} || true'
+                    // Stop old container if it exists
+                    bat 'docker rm -f %CONTAINER_NAME% || echo "No container to remove"'
                     // Run new container
-                    sh 'docker run -d --name ${CONTAINER_NAME} -p 5000:5000 ${IMAGE_NAME}'
+                    bat 'docker run -d --name %CONTAINER_NAME% -p 5000:5000 %IMAGE_NAME%'
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
             echo '✅ Deployment successful! Visit http://localhost:5000'
         }
         failure {
-            echo '❌ Deployment failed!'
+            echo '❌ Pipeline failed!'
         }
     }
 }
