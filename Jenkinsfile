@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "Jenkins-pipeline-app"
+        IMAGE_NAME = "jenkins-pipeline-app"
         CONTAINER_NAME = "flask-container"
     }
 
