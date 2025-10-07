@@ -51,6 +51,8 @@ flask-jenkins-pipeline/
 │-- Dockerfile
 │-- Jenkinsfile
 ```
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/24695b86-a6c0-4b66-9459-f218080a46b1" />
+
 
 ---
 
@@ -78,6 +80,11 @@ git push -u origin main
 
 > After pushing, Jenkins (configured with your repo) can pull the `main` branch and execute the `jenkinsfile` pipeline.
 
+<img width="1191" height="217" alt="image" src="https://github.com/user-attachments/assets/5ef74c5c-08c4-4965-87a9-e34436862f01" />
+<img width="885" height="373" alt="image" src="https://github.com/user-attachments/assets/ffb5b45e-58fd-4c01-b8c5-8578128b09dd" />
+
+
+
 ---
 
 ## Build, Run & Test Locally (Manual Verification)
@@ -89,32 +96,34 @@ These steps let you verify the Docker image and container locally before relying
 docker build -t jenkins-pipeline-app .
 ```
 **Expected result:** Docker builds the image and tags it as `jenkins-pipeline-app`.
+<img width="1510" height="752" alt="image" src="https://github.com/user-attachments/assets/c6dc7e6f-0c68-4a1c-97cc-c425f5eca756" />
+
 
 ### 2. Run the Docker container
 ```bash
 docker run -d -p 5000:5000 --name flask-container jenkins-pipeline-app
 ```
 **What this does:** Runs the container in detached mode, maps container port `5000` to host port `5000`, and names the container `flask-container`.
+<img width="1021" height="62" alt="image" src="https://github.com/user-attachments/assets/75d5085d-8159-48d6-9e47-46e57a0f2ae0" />
+
 
 ### 3. Verify the container is running
 ```bash
 docker ps
 ```
-You should see `flask-container` listed. To view logs:
-```bash
-docker logs -f flask-container
-```
+You should see `flask-container` listed. 
+<img width="1281" height="59" alt="image" src="https://github.com/user-attachments/assets/6afe2a2f-c2be-4883-aa14-57e6a0baa980" />
+
+
 
 ### 4. Test the application
 Open your browser and visit:  
 ```
 http://localhost:5000
 ```
-Or use `curl`:
-```bash
-curl http://localhost:5000
-```
+<img width="1919" height="967" alt="Screenshot 2025-10-07 194110" src="https://github.com/user-attachments/assets/d14f08ec-f56d-4f5b-8f0e-660faa33212c" />
 
+---
 Expected response:  
 ```
 Hello from Jenkins CI/CD Pipeline 
@@ -124,6 +133,10 @@ Hello from Jenkins CI/CD Pipeline
 ```bash
 docker rm -f flask-container
 ```
+<img width="1397" height="263" alt="image" src="https://github.com/user-attachments/assets/d377aea0-ffe4-4c8d-92bc-0cb0570490c6" />
+
+---
+
 
 ---
 
@@ -144,10 +157,12 @@ docker rm -f flask-container
 5. Branch: `*/main`  
 6. Script Path: `Jenkinsfile`  
 7. Save and click **Build Now**
+---
+<img width="1916" height="980" alt="Screenshot 2025-10-07 184921" src="https://github.com/user-attachments/assets/0e42e406-5a8a-4da9-8261-986851305a53" />
 
 ---
 
-## 📸 Jenkins Pipeline Stages
+## Jenkins Pipeline Stages
 
 | Stage | Description |
 |--------|--------------|
@@ -156,6 +171,10 @@ docker rm -f flask-container
 | **Deploy Container** | Runs Flask app in a Docker container |
 
 ---
+<img width="1919" height="1032" alt="Screenshot 2025-10-07 181542" src="https://github.com/user-attachments/assets/ee571c24-d4de-4e75-b2b4-01adb835a747" />
+
+---
+
 
 ## Learning Outcomes
 
