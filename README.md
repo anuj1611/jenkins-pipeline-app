@@ -158,7 +158,8 @@ docker rm -f flask-container
 6. Script Path: `Jenkinsfile`  
 7. Save and click **Build Now**
 ---
-<img width="1916" height="980" alt="Screenshot 2025-10-07 184921" src="https://github.com/user-attachments/assets/0e42e406-5a8a-4da9-8261-986851305a53" />
+<img width="1919" height="1035" alt="Screenshot 2025-10-07 181707" src="https://github.com/user-attachments/assets/36c6d442-5e1d-4781-9ce8-a2b9526e97fc" />
+
 
 ---
 
